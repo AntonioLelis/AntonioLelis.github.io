@@ -4,46 +4,644 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Curriculo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Antonio Lelis - Win98</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Tahoma:wght@400;700&display=swap');
+
+        /* --- RESET & BODY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Tahoma', sans-serif;
+            background-color: #008080; /* Clássico Teal do 98 se imagem falhar */
+            background-image: url('img/bc-w-xp.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- DESKTOP ICONS --- */
+        #desktop {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 90vh;
+            width: fit-content;
+            gap: 25px;
+            align-content: flex-start;
+        }
+
+        .icon {
+            width: 70px;
+            text-align: center;
+            cursor: pointer;
+            color: white;
+            /* Sombras duras para texto no desktop */
+            text-shadow: 1px 1px 0px black; 
+            border: 1px solid transparent;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .icon:hover {
+            /* No 98 não tinha hover background, mas vamos deixar sutil */
+            background-color: rgba(0, 0, 128, 0.3); 
+            border: 1px dotted white; /* Borda pontilhada clássica de seleção */
+        }
+
+        .icon i {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            /* Drop shadow pixelado simples */
+            filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.8)); 
+        }
+
+        .icon-label {
+            font-family: 'Tahoma', sans-serif;
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        /* Cores dos ícones */
+        .icon-yellow { color: #f1c40f; }
+        .icon-blue { color: #3498db; }
+        .icon-green { color: #2ecc71; }
+        .icon-red { color: #e74c3c; }
+        .icon-orange { color: #e67e22; }
+
+        /* --- WINDOWS (JANELAS 98) --- */
+        .window {
+            position: absolute;
+            background-color: #c0c0c0; /* Cinza Clássico */
+            /* Borda 3D Estilo Windows 98 */
+            border-top: 2px solid #dfdfdf;
+            border-left: 2px solid #dfdfdf;
+            border-right: 2px solid #000000;
+            border-bottom: 2px solid #000000;
+            box-shadow: 1px 1px 0px 0px #000 inset, -1px -1px 0px 0px #fff inset; /* Efeito chanfrado duplo */
+            
+            min-width: 300px;
+            max-width: 600px;
+            width: 90%;
+            display: none;
+            flex-direction: column;
+            z-index: 10;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 2px; /* Espaço entre a borda externa e o conteúdo */
+        }
+
+        .title-bar {
+            /* Gradiente clássico 98: Azul Escuro para Azul Claro */
+            background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+            padding: 3px 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: grab;
+            margin: 1px;
+        }
+
+        .title-bar-text {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Botão de Fechar Clássico */
+        .title-bar-controls button {
+            width: 16px;
+            height: 14px;
+            background-color: #c0c0c0;
+            border-top: 1px solid #fff;
+            border-left: 1px solid #fff;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            box-shadow: inset -1px -1px 0px #808080;
+            color: black;
+            font-weight: bold;
+            font-family: sans-serif;
+            font-size: 10px;
+            line-height: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 2px;
+        }
+        
+        .title-bar-controls button:active {
+            border-top: 1px solid #000;
+            border-left: 1px solid #000;
+            border-right: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            padding-top: 1px;
+            padding-left: 1px;
+        }
+
+        /* Menu Bar (Arquivo, Editar...) opcional para look, aqui apenas decorativo */
+        .menu-bar {
+            display: flex;
+            gap: 10px;
+            padding: 2px 5px;
+            font-size: 11px;
+            margin-bottom: 2px;
+        }
+        .menu-bar span { cursor: default; }
+        .menu-bar span:hover { background-color: #000080; color: white; }
+
+        .window-body {
+            padding: 15px;
+            color: black;
+            font-family: 'Tahoma', sans-serif;
+            font-size: 13px;
+            background-color: white;
+            /* Borda afundada (Inset) para o conteúdo */
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            margin: 2px;
+            max-height: 60vh;
+            overflow-y: auto;
+            user-select: text;
+            
+            /* Scrollbar retro (apenas Chrome/Webkit) */
+            scrollbar-width: auto;
+            scrollbar-color: #c0c0c0 #f0f0f0;
+        }
+
+        .window-body::-webkit-scrollbar { width: 16px; }
+        .window-body::-webkit-scrollbar-track { background: #dfdfdf; }
+        .window-body::-webkit-scrollbar-thumb { 
+            background-color: #c0c0c0; 
+            border: 2px solid; 
+            border-color: #fff #000 #000 #fff; 
+        }
+
+        .window-body h2 {
+            font-size: 14px;
+            color: black;
+            border-bottom: none;
+            margin-bottom: 10px;
+        }
+
+        /* Estilo para links dentro da janela */
+        .window-body a { color: #0000FF; }
+
+        .tag {
+            border: 1px solid #000;
+            background-color: #fff;
+            padding: 1px 4px;
+            font-size: 11px;
+            margin: 2px;
+            display: inline-block;
+            box-shadow: 2px 2px 0px #808080; /* Sombra dura nas tags */
+        }
+
+        /* --- TASKBAR (Win 98) --- */
+        #taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 28px; /* Mais fina */
+            background-color: #c0c0c0;
+            border-top: 2px solid #fff;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+            z-index: 1000;
+        }
+
+        /* Botão Iniciar Clássico */
+        #start-button {
+            background-color: #c0c0c0;
+            color: black;
+            font-family: 'Tahoma', sans-serif;
+            font-weight: bold;
+            font-size: 11px;
+            height: 22px;
+            padding: 0 5px;
+            margin-right: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            /* Borda 3D para fora */
+            border-top: 1px solid #fff;
+            border-left: 1px solid #fff;
+            border-right: 2px solid #000;
+            border-bottom: 2px solid #000;
+            box-shadow: inset -1px -1px 0px #808080;
+        }
+
+        #start-button:active {
+            border-top: 2px solid #000;
+            border-left: 2px solid #000;
+            border-right: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            padding-top: 2px; /* Efeito de afundar */
+        }
+
+        #start-button img {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Divisória na barra */
+        .divider {
+            width: 2px;
+            height: 20px;
+            border-left: 1px solid #808080;
+            border-right: 1px solid #fff;
+            margin: 0 5px;
+        }
+
+        .taskbar-item {
+            background-color: #c0c0c0;
+            color: black;
+            padding: 0 5px;
+            margin-right: 2px;
+            height: 22px;
+            width: 150px;
+            font-size: 11px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            /* Borda 3D para fora (padrão) */
+            border-top: 1px solid #fff;
+            border-left: 1px solid #fff;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+
+        .taskbar-item.active {
+            /* Borda afundada (Xadrez pontilhado no original, mas aqui solido escuro) */
+            background-color: #e0e0e0;
+            border-top: 1px solid #000;
+            border-left: 1px solid #000;
+            border-right: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            font-weight: bold;
+        }
+
+        .taskbar-item img { width: 16px; height: 16px; }
+
+        .tray {
+            margin-left: auto;
+            border-top: 1px solid #808080;
+            border-left: 1px solid #808080;
+            border-right: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            padding: 2px 10px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            font-size: 11px;
+            gap: 5px;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            #desktop {
+                flex-direction: row;
+                align-content: flex-start;
+            }
+            .window {
+                width: 95%;
+                top: 50px;
+                max-height: 80vh;
+            }
+            .taskbar-item {
+                width: 40px; /* Apenas ícone no mobile */
+                overflow: hidden;
+            }
+        }
+
+    </style>
 </head>
 <body>
-    <section>
-        <div>
-            <h1>Sobre Mim</h1>
-            <p>Antonio Augusto de Almeida Lelis.</p> <p>22 anos.</p> <p>Praia da Costa, ES.</p> 
+
+    <!-- DESKTOP -->
+    <div id="desktop">
+        
+        <div class="icon" onclick="openWindow('sobre')">
+            <i class="fas fa-user-circle icon-blue"></i>
+            <span class="icon-label">Sobre Mim</span>
         </div>
-        <div>
-            <h1>Objetivo Profissional</h1>
-            <p>Estudante de Sistemas de Informação em busca de oportunidades para aplicar e expandir meus conhecimentos em desenvolvimento web e análise de dados. Com foco em aprendizado contínuo, criatividade e proatividade, desejo contribuir com soluções inovadoras e eficientes em uma organização que valorize o desenvolvimento tecnológico.</p>
+
+        <div class="icon" onclick="openWindow('experiencia')">
+            <i class="fas fa-building icon-blue"></i>
+            <span class="icon-label">Trabalho</span>
         </div>
-        <div>
-            <h1>Formação Acadêmica</h1>
-            <p>Bacharelado em Sistemas de Informação<br>Universidade Vila Velha (UVV)<br>3º Período<br><br>Medalhista nas Olimpíadas Canguru de Matemática</p>
+
+        <div class="icon" onclick="openWindow('skills')">
+            <i class="fas fa-cogs icon-orange"></i>
+            <span class="icon-label">Skills</span>
         </div>
-        <div>
-            <h1>Habilidades Técnicas</h1>
-            <p>Desenvolvimento Web: HTML, CSS, JavaScript<br>Banco de Dados: MySQL<br>Linguagens de Programação: Python e Java<br>Análise de Dados: Excel, Power BI<br>Design: Figma, Canvas e Astah</p>
+
+        <div class="icon" onclick="openWindow('formacao')">
+            <i class="fas fa-graduation-cap icon-red"></i>
+            <span class="icon-label">Faculdade</span>
         </div>
-        <div>
-            <h1>Projetos Relevantes</h1>
-            <p>Projetos no GitHub: Disponíveis em GitHub: AntonioLelis</p>
+
+        <div class="icon" onclick="openWindow('projetos')">
+            <i class="fas fa-folder icon-yellow"></i>
+            <span class="icon-label">Projetos</span>
         </div>
-        <div>
-            <h1>Idiomas</h1>
-            <p>Inglês: Intermediário<br>Espanhol: Básico</p>
+
+        <div class="icon" onclick="openWindow('contato')">
+            <i class="fas fa-envelope icon-blue"></i>
+            <span class="icon-label">Email</span>
         </div>
-        <div>
-            <h1>Informações Adicionais</h1>
-            <p>Em aprendizado constante, com grande capacidade de adaptação a novas tecnologias. Perfil criativo e proativo, focado em encontrar soluções inovadoras para problemas complexos.</p>
+
+        <div class="icon" onclick="window.open('https://github.com/AntonioLelis', '_blank')">
+            <i class="fab fa-github"></i>
+            <span class="icon-label">GitHub</span>
         </div>
-    </section>
-    <footer>
-        <a href="https://www.youtube.com/watch?v=P5ZJui3aPoQ"><i class="fa fa-play"></i> Start</a>
-        <a href="https://www.instagram.com/antoniolelis26/"><i class="fa fa-instagram"></i> @antoniolelis26</a>
-        <a href="https://www.linkedin.com/in/antoniolelis"><i class="fa fa-linkedin"></i> Antonio Lelis</a>
-        <a href="https://github.com/AntonioLelis"><i class="fa fa-github"></i> AntonioLelis</a>
-    </footer>
+        
+    </div>
+
+    <!-- JANELAS -->
+    
+    <!-- Janela Sobre -->
+    <div id="window-sobre" class="window">
+        <div class="title-bar" onmousedown="startDrag(event, 'window-sobre')">
+            <div class="title-bar-text"><i class="fas fa-user-circle"></i> Sobre Mim</div>
+            <div class="title-bar-controls">
+                <button onclick="closeWindow('sobre')">X</button>
+            </div>
+        </div>
+        <div class="menu-bar"><span>Arquivo</span> <span>Editar</span> <span>Exibir</span> <span>Ajuda</span></div>
+        <div class="window-body">
+            <h2>Antonio Augusto de Almeida Lelis</h2>
+            <p><strong>Idade:</strong> 23 Anos</p>
+            <p><strong>Local:</strong> Praia da Costa, ES</p>
+            <p>Estudante do 5º período de Sistemas de Informação, com foco em análise de dados e desenvolvimento de aplicações. Perfil analítico e proativo.</p>
+            <br>
+            <p><em>"Em aprendizado constante, focado em encontrar soluções inovadoras."</em></p>
+        </div>
+    </div>
+
+    <!-- Janela Experiência -->
+    <div id="window-experiencia" class="window">
+        <div class="title-bar" onmousedown="startDrag(event, 'window-experiencia')">
+            <div class="title-bar-text"><i class="fas fa-building"></i> Trabalho - Bloco de Notas</div>
+            <div class="title-bar-controls">
+                <button onclick="closeWindow('experiencia')">X</button>
+            </div>
+        </div>
+        <div class="menu-bar"><span>Arquivo</span> <span>Editar</span></div>
+        <div class="window-body">
+            <h2>Prefeitura Municipal de Vitória (SEMUS)</h2>
+            <p><strong>Cargo:</strong> Estagiário de Sistemas de Informação</p>
+            <p><strong>Período:</strong> Abril/2025 – Atualmente</p>
+            <hr style="border: 0; border-bottom: 1px solid #000; margin: 10px 0;">
+            <ul>
+                <li>- Desenvolvimento de aplicações internas.</li>
+                <li>- Dashboards com <strong>Python</strong> (ETL).</li>
+                <li>- Tratamento de grandes volumes de dados.</li>
+                <li>- Suporte técnico ao setor.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Janela Skills -->
+    <div id="window-skills" class="window">
+        <div class="title-bar" onmousedown="startDrag(event, 'window-skills')">
+            <div class="title-bar-text"><i class="fas fa-cogs"></i> Painel de Controle</div>
+            <div class="title-bar-controls">
+                <button onclick="closeWindow('skills')">X</button>
+            </div>
+        </div>
+        <div class="menu-bar"><span>Arquivo</span> <span>Exibir</span></div>
+        <div class="window-body">
+            <p>Instalando conhecimentos...</p>
+            
+            <h3>Linguagens</h3>
+            <p>
+                <span class="tag">Python</span>
+                <span class="tag">Java</span>
+                <span class="tag">C#</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">TypeScript</span>
+            </p>
+
+            <h3>Web & DevOps</h3>
+            <p>
+                <span class="tag">Next.js</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Linux</span>
+                <span class="tag">Git</span>
+            </p>
+
+            <h3>Dados</h3>
+            <p>
+                <span class="tag">MySQL</span>
+                <span class="tag">SQL Server</span>
+                <span class="tag">T-SQL</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">Excel</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Janela Formação -->
+    <div id="window-formacao" class="window">
+        <div class="title-bar" onmousedown="startDrag(event, 'window-formacao')">
+            <div class="title-bar-text"><i class="fas fa-graduation-cap"></i> Faculdade</div>
+            <div class="title-bar-controls">
+                <button onclick="closeWindow('formacao')">X</button>
+            </div>
+        </div>
+        <div class="window-body">
+            <h2>Universidade Vila Velha (UVV)</h2>
+            <p><strong>Curso:</strong> Sist. de Informação</p>
+            <p><strong>Status:</strong> 5º Período</p>
+            <p><strong>Previsão:</strong> 2027</p>
+            <br>
+            <h3>Prêmios</h3>
+            <ul>
+                <li>Medalhista Olimpíadas Canguru de Matemática.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Janela Projetos -->
+    <div id="window-projetos" class="window">
+        <div class="title-bar" onmousedown="startDrag(event, 'window-projetos')">
+            <div class="title-bar-text"><i class="fas fa-folder-open"></i> C:\Projetos</div>
+            <div class="title-bar-controls">
+                <button onclick="closeWindow('projetos')">X</button>
+            </div>
+        </div>
+        <div class="window-body">
+            <ul>
+                <li><strong>App de Análise de Dados (SEMUS)</strong></li>
+                <li><strong>Automação Python</strong></li>
+                <li><strong>Portfólio Web Next.js</strong></li>
+            </ul>
+            <p style="text-align: center; margin-top: 15px;">
+                <a href="https://github.com/AntonioLelis" target="_blank">[ Abrir no GitHub ]</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Janela Contato -->
+    <div id="window-contato" class="window">
+        <div class="title-bar" onmousedown="startDrag(event, 'window-contato')">
+            <div class="title-bar-text"><i class="fas fa-envelope"></i> Outlook Express</div>
+            <div class="title-bar-controls">
+                <button onclick="closeWindow('contato')">X</button>
+            </div>
+        </div>
+        <div class="window-body">
+            <p><strong>De:</strong> Antonio Lelis</p>
+            <hr>
+            <ul>
+                <li><strong>Email:</strong> antoniolelis2607@outlook.com</li>
+                <li><strong>Tel:</strong> (27) 98874-1280</li>
+                <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/antoniolelis" target="_blank">in/antoniolelis</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TASKBAR -->
+    <div id="taskbar">
+        <div id="start-button">
+            <i class="fab fa-windows"></i> <span>Iniciar</span>
+        </div>
+        
+        <div class="divider"></div>
+
+        <div id="taskbar-apps" style="display: flex;">
+            <!-- Apps abertos -->
+        </div>
+
+        <div class="tray">
+            <i class="fas fa-volume-up"></i>
+            <span id="time">12:00</span>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('time').innerText = `${hours}:${minutes}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        let zIndexCounter = 100;
+
+        function openWindow(id) {
+            const windowEl = document.getElementById(`window-${id}`);
+            const taskbarApps = document.getElementById('taskbar-apps');
+            
+            if (windowEl.style.display === 'flex') {
+                bringToFront(windowEl);
+                return;
+            }
+
+            windowEl.style.display = 'flex';
+            bringToFront(windowEl);
+
+            const taskItem = document.createElement('div');
+            taskItem.className = 'taskbar-item active';
+            taskItem.id = `task-${id}`;
+            // Pega apenas o texto, sem o ícone para a taskbar ficar limpa ou adiciona icone se quiser
+            const titleHTML = windowEl.querySelector('.title-bar-text').innerHTML;
+            taskItem.innerHTML = titleHTML; 
+            taskItem.onclick = () => toggleWindow(id);
+            taskbarApps.appendChild(taskItem);
+        }
+
+        function closeWindow(id) {
+            document.getElementById(`window-${id}`).style.display = 'none';
+            const taskItem = document.getElementById(`task-${id}`);
+            if (taskItem) taskItem.remove();
+        }
+
+        function toggleWindow(id) {
+            const windowEl = document.getElementById(`window-${id}`);
+            const taskItem = document.getElementById(`task-${id}`);
+            
+            if (windowEl.style.display === 'none') {
+                windowEl.style.display = 'flex';
+                bringToFront(windowEl);
+                taskItem.classList.add('active');
+            } else {
+                // Se estiver no topo, minimiza
+                if (windowEl.style.zIndex == zIndexCounter) {
+                    windowEl.style.display = 'none';
+                    taskItem.classList.remove('active');
+                } else {
+                    // Traz para frente
+                    bringToFront(windowEl);
+                    taskItem.classList.add('active');
+                }
+            }
+        }
+
+        function bringToFront(element) {
+            zIndexCounter++;
+            element.style.zIndex = zIndexCounter;
+            
+            // Atualiza estado visual da taskbar (opcional, complexo para este script simples)
+        }
+
+        // Drag and Drop
+        let isDragging = false;
+        let currentWindow = null;
+        let offset = { x: 0, y: 0 };
+
+        function startDrag(e, windowId) {
+            isDragging = true;
+            currentWindow = document.getElementById(windowId);
+            bringToFront(currentWindow);
+
+            const rect = currentWindow.getBoundingClientRect();
+            offset.x = e.clientX - rect.left;
+            offset.y = e.clientY - rect.top;
+
+            currentWindow.style.transform = 'none';
+            currentWindow.style.left = rect.left + 'px';
+            currentWindow.style.top = rect.top + 'px';
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging && currentWindow) {
+                e.preventDefault();
+                currentWindow.style.left = (e.clientX - offset.x) + 'px';
+                currentWindow.style.top = (e.clientY - offset.y) + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            currentWindow = null;
+        });
+    </script>
+
 </body>
 </html>
