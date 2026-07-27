@@ -200,6 +200,12 @@
             border-bottom: none;
             margin-bottom: 10px;
         }
+        
+        .window-body h3 {
+            font-size: 13px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
 
         /* Estilo para links dentro da janela */
         .window-body a { color: #0000FF; }
@@ -212,6 +218,15 @@
             margin: 2px;
             display: inline-block;
             box-shadow: 2px 2px 0px #808080; /* Sombra dura nas tags */
+        }
+        
+        ul.window-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        ul.window-list li {
+            margin-bottom: 8px;
         }
 
         /* --- TASKBAR (Win 98) --- */
@@ -374,7 +389,7 @@
 
         <div class="icon" onclick="window.open('https://github.com/AntonioLelis', '_blank')">
             <i class="fab fa-github"></i>
-            <span class="icon-label">GitHub</span>
+            <span class="icon-label">GitHub[cite: 1]</span>
         </div>
         
     </div>
@@ -392,11 +407,13 @@
         <div class="menu-bar"><span>Arquivo</span> <span>Editar</span> <span>Exibir</span> <span>Ajuda</span></div>
         <div class="window-body">
             <h2>Antonio Augusto de Almeida Lelis</h2>
-            <p><strong>Idade:</strong> 23 Anos</p>
-            <p><strong>Local:</strong> Praia da Costa, ES</p>
-            <p>Estudante do 5º período de Sistemas de Informação, com foco em análise de dados e desenvolvimento de aplicações. Perfil analítico e proativo.</p>
+            <p><strong>Idade:</strong> 24 Anos[cite: 1]</p>
+            <p><strong>Local:</strong> Praia da Costa, ES[cite: 1]</p>
             <br>
-            <p><em>"Em aprendizado constante, focado em encontrar soluções inovadoras."</em></p>
+            <p>Engenheiro de Dados & Desenvolvedor Full-Stack. Estudante do 5º período de Sistemas de Informação[cite: 1].</p>
+            <p>Experiência prática na criação de motores ETL, consumo de APIs (incluindo Inteligência Artificial) e construção de aplicações interativas focadas na resolução de problemas complexos.</p>
+            <br>
+            <p><em>"Em aprendizado constante, focado em engenharia de dados, automação e arquiteturas distribuídas."</em></p>
         </div>
     </div>
 
@@ -410,15 +427,23 @@
         </div>
         <div class="menu-bar"><span>Arquivo</span> <span>Editar</span></div>
         <div class="window-body">
-            <h2>Prefeitura Municipal de Vitória (SEMUS)</h2>
-            <p><strong>Cargo:</strong> Estagiário de Sistemas de Informação</p>
-            <p><strong>Período:</strong> Abril/2025 – Atualmente</p>
-            <hr style="border: 0; border-bottom: 1px solid #000; margin: 10px 0;">
-            <ul>
-                <li>- Desenvolvimento de aplicações internas.</li>
-                <li>- Dashboards com <strong>Python</strong> (ETL).</li>
-                <li>- Tratamento de grandes volumes de dados.</li>
-                <li>- Suporte técnico ao setor.</li>
+            <h2>Prefeitura Municipal de Vitória (SEMUS)[cite: 1]</h2>
+            <p><strong>Cargo:</strong> Estagiário de Sistemas de Informação[cite: 1]</p>
+            <p><strong>Período:</strong> Abril/2025 – Atualmente[cite: 1]</p>
+            <ul class="window-list">
+                <li>- Desenvolvimento de pipeline e motor ETL em Python/Streamlit para a Rede Bem Estar (RBE).</li>
+                <li>- Integração de dados da saúde pública em painéis gerenciais no Power BI[cite: 1].</li>
+                <li>- Suporte técnico e tratamento de grandes volumes de dados[cite: 1].</li>
+            </ul>
+            
+            <hr style="border: 0; border-bottom: 1px solid #808080; margin: 15px 0;">
+            
+            <h2>Projeto Capixabaja</h2>
+            <p><strong>Cargo:</strong> Membro da Equipe</p>
+            <p><strong>Período:</strong> Abril/2026 – Julho/2026</p>
+            <ul class="window-list">
+                <li>- Atuação colaborativa no desenvolvimento de veículos off-road Baja.</li>
+                <li>- Estruturação de propostas comerciais de patrocínio (foco em logística e talentos).</li>
             </ul>
         </div>
     </div>
@@ -433,33 +458,39 @@
         </div>
         <div class="menu-bar"><span>Arquivo</span> <span>Exibir</span></div>
         <div class="window-body">
-            <p>Instalando conhecimentos...</p>
+            <p>Sistemas e Arquiteturas Instaladas:</p>
             
+            <h3>Engenharia e Dados</h3>
+            <p>
+                <span class="tag">Apache Kafka</span>
+                <span class="tag">Apache Flink</span>
+                <span class="tag">Python (Pandas, Streamlit)[cite: 1]</span>
+                <span class="tag">Power BI (ETL)[cite: 1]</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">MySQL[cite: 1]</span>
+                <span class="tag">SQL Server[cite: 1]</span>
+            </p>
+
             <h3>Linguagens</h3>
             <p>
-                <span class="tag">Python</span>
-                <span class="tag">Java</span>
-                <span class="tag">C#</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">TypeScript</span>
+                <span class="tag">Python[cite: 1]</span>
+                <span class="tag">JavaScript[cite: 1]</span>
+                <span class="tag">TypeScript[cite: 1]</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Java[cite: 1]</span>
+                <span class="tag">C#[cite: 1]</span>
             </p>
 
-            <h3>Web & DevOps</h3>
+            <h3>Web & Infraestrutura</h3>
             <p>
-                <span class="tag">Next.js</span>
-                <span class="tag">Docker</span>
-                <span class="tag">Linux</span>
-                <span class="tag">Git</span>
-            </p>
-
-            <h3>Dados</h3>
-            <p>
-                <span class="tag">MySQL</span>
-                <span class="tag">SQL Server</span>
-                <span class="tag">T-SQL</span>
-                <span class="tag">Power BI</span>
-                <span class="tag">Pandas</span>
-                <span class="tag">Excel</span>
+                <span class="tag">React</span>
+                <span class="tag">Next.js[cite: 1]</span>
+                <span class="tag">HTML5/CSS3[cite: 1]</span>
+                <span class="tag">Integração API/Gemini</span>
+                <span class="tag">Docker[cite: 1]</span>
+                <span class="tag">Linux[cite: 1]</span>
+                <span class="tag">Git/GitHub[cite: 1]</span>
             </p>
         </div>
     </div>
@@ -467,20 +498,31 @@
     <!-- Janela Formação -->
     <div id="window-formacao" class="window">
         <div class="title-bar" onmousedown="startDrag(event, 'window-formacao')">
-            <div class="title-bar-text"><i class="fas fa-graduation-cap"></i> Faculdade</div>
+            <div class="title-bar-text"><i class="fas fa-graduation-cap"></i> Faculdade e Certificados</div>
             <div class="title-bar-controls">
                 <button onclick="closeWindow('formacao')">X</button>
             </div>
         </div>
         <div class="window-body">
-            <h2>Universidade Vila Velha (UVV)</h2>
-            <p><strong>Curso:</strong> Sist. de Informação</p>
-            <p><strong>Status:</strong> 5º Período</p>
-            <p><strong>Previsão:</strong> 2027</p>
-            <br>
-            <h3>Prêmios</h3>
-            <ul>
-                <li>Medalhista Olimpíadas Canguru de Matemática.</li>
+            <h2>Universidade Vila Velha (UVV)[cite: 1]</h2>
+            <p><strong>Curso:</strong> Sistemas de Informação[cite: 1]</p>
+            <p><strong>Status:</strong> Em andamento (5º Período)[cite: 1]</p>
+            <p><strong>Previsão de Conclusão:</strong> 2027[cite: 1]</p>
+            
+            <hr style="border: 0; border-bottom: 1px solid #808080; margin: 15px 0;">
+            
+            <h3>Certificações de Mercado</h3>
+            <ul class="window-list">
+                <li><strong>Cisco Networking Academy:</strong> CCNA: Introduction to Networks[cite: 3]</li>
+                <li><strong>Oracle Academy:</strong> Java Fundamentals[cite: 2]</li>
+            </ul>
+
+            <h3>Extensão Acadêmica (UVV)</h3>
+            <ul class="window-list">
+                <li>Sistemas de RaG & IA Corporativo[cite: 11]</li>
+                <li>Inovando com aplicações, dados e IA Generativa[cite: 6]</li>
+                <li>Produtos Digitais de Qualidade & IA 360°[cite: 4, 8, 9]</li>
+                <li><strong>Prêmio:</strong> Medalhista nas Olimpíadas Canguru de Matemática[cite: 1].</li>
             </ul>
         </div>
     </div>
@@ -494,13 +536,15 @@
             </div>
         </div>
         <div class="window-body">
-            <ul>
-                <li><strong>App de Análise de Dados (SEMUS)</strong></li>
-                <li><strong>Automação Python</strong></li>
-                <li><strong>Portfólio Web Next.js</strong></li>
+            <ul class="window-list">
+                <li><strong>App de Análise de Dados e Automação (SEMUS):</strong> Motor ETL construído com Python e Streamlit para estruturar relatórios não tabulares da Rede Bem Estar[cite: 1].</li>
+                <li><strong>ListAI Odonto:</strong> Aplicação Full-Stack (Next.js, Python, Supabase) integrada com a Gemini API para extrair e estruturar dados complexos de PDFs.</li>
+                <li><strong>Jogos e Aplicações Interativas:</strong> "Auto Tycoon" (Manager desenvolvido em React/TypeScript) e "RetroParty.exe" (Multiplayer).</li>
+                <li><strong>Condozen:</strong> Colaboração de software em equipe gerenciada com repositórios GitHub.</li>
+                <li><strong>Portfólio Vanilla:</strong> Construção puramente em HTML, CSS e Vanilla JavaScript demonstrando domínio de base front-end.</li>
             </ul>
             <p style="text-align: center; margin-top: 15px;">
-                <a href="https://github.com/AntonioLelis" target="_blank">[ Abrir no GitHub ]</a>
+                <a href="https://github.com/AntonioLelis" target="_blank">[ Abrir Repositórios no GitHub ][cite: 1]</a>
             </p>
         </div>
     </div>
@@ -515,10 +559,12 @@
         </div>
         <div class="window-body">
             <p><strong>De:</strong> Antonio Lelis</p>
-            <hr>
-            <ul>
-                <li><strong>Email:</strong> antoniolelis2607@outlook.com</li>
-                <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/antoniolelis" target="_blank">in/antoniolelis</a></li>
+            <hr style="border: 0; border-bottom: 1px solid #808080; margin: 10px 0;">
+            <ul class="window-list">
+                <li><strong>Telefone:</strong> (27) 98874-1280[cite: 1]</li>
+                <li><strong>Email:</strong> antoniolelis2607@outlook.com[cite: 1]</li>
+                <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/antoniolelis" target="_blank">linkedin.com/in/antoniolelis[cite: 1]</a></li>
+                <li><strong>Portfólio (Vanilla):</strong> <a href="https://antoniolelis.github.io/" target="_blank">antoniolelis.github.io[cite: 1]</a></li>
             </ul>
         </div>
     </div>
@@ -644,4 +690,3 @@
 
 </body>
 </html>
-
